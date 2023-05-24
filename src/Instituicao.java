@@ -1,9 +1,9 @@
 import util.LinkedList2;
 
 public class Instituicao {
-    int idInstituicao;
-    String nomeInstituicao;
-    LinkedList2<Unidade> listaUnidade;
+    private int idInstituicao;
+    private String nomeInstituicao;
+    private LinkedList2<Unidade> listaUnidade;
     
     public Instituicao(int idInstituicao, String nomeInstituicao) {
         this.idInstituicao = idInstituicao;
@@ -26,11 +26,18 @@ public class Instituicao {
     public void setNomeInstituicao(String nomeInstituicao) {
         this.nomeInstituicao = nomeInstituicao;
     }
-
     
     public String toString() {
         return "Instituicao [idInstituicao=" + idInstituicao + ", nomeInstituicao=" + nomeInstituicao
-                + ", listaUnidade=" + listaUnidade + "]";
+        + ", listaUnidade=" + listaUnidade + "]";
+    }
+
+    public LinkedList2<Unidade> getListaUnidade() {
+        return listaUnidade;
+    }
+
+    public void setListaUnidade(LinkedList2<Unidade> listaUnidade) {
+        this.listaUnidade = listaUnidade;
     }
 
     public void inserirUnidade(int idUnidade, String nomeUnidade, int idCurso, String nomeCurso,int idProfessor, String nomeProfessor, int idSala, String nomeSala, int idDisciplina, String nomeDisciplina, int idTurma, int diaSemana, int quantAluno, String horarioI, String horarioF, String nomeTurma){
@@ -40,4 +47,5 @@ public class Instituicao {
 
         this.listaUnidade.inserir(unidade);
     }
+
 }
