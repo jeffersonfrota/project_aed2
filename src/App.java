@@ -30,11 +30,25 @@ public class App {
         System.out.println(unidade);
          */
 
+        /*
+        
+        ***** TESTE DO METODO "inserirCurso" NA CLASSE UNIDADE;
+         
         Unidade unidade = new Unidade(21, "INF");
        
 
         System.out.println(unidade.inserirCurso(1, "BSI",12, "wanderley", 305, "Sala 305", 5110,"AED", 3,2,40,"20:30", "22:00", "BSI-3"));
         System.out.println(unidade.inserirCurso(1, "BES", 10,"Federson",205, "Sala 205", 5010, "POO", 4,3,42,"20:00", "21:30", "BSI-2"));
 
+        */
+
+
+        Instituicao instituicao = new Instituicao(03, "UFG");
+        
+        instituicao.inserirUnidade(21, "INF", 1, "BSI",12, "wanderley", 305, "Sala 305", 5110,"AED", 3,2,40,"20:30", "22:00", "BSI-3");
+
+        instituicao.inserirUnidade(3, "FACE", 1, "BES", 10,"Federson",205, "Sala 205", 5010, "POO", 4,3,42,"20:00", "21:30", "BSI-2");
+
+        System.out.println(instituicao);
     }
 }
