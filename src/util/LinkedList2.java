@@ -2,7 +2,7 @@ package util;
 
 public class LinkedList2<T> {
  
-    Node<T> head = null;
+    private Node<T> head = null;
 
     public String inserir(T importante)
     
@@ -16,7 +16,6 @@ public class LinkedList2<T> {
             return "Node cadastrado com sucesso!";
         }else
         {
-
             while(current.getNext() != null)
             {
                 current = current.getNext();
@@ -27,8 +26,17 @@ public class LinkedList2<T> {
     }
 
     public String toString() {
-        return "\n\t\tLinkedList2 [head=" + head + "]";
+        return "\n\t\t" + head + "";
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
+
+    
     
 }

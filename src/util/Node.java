@@ -3,7 +3,6 @@ package util;
 public class Node<T> {
     private T importante;
     private Node<T> next;
-    private Node<T> down;
     
     public Node(T importante){
         this.importante = importante;
@@ -26,19 +25,8 @@ public class Node<T> {
         this.next = next;
     }
 
-    public Node<T> getDown() {
-        return down;
-    }
-
-    public void setDown(Node<T> down) {
-        this.down = down;
-    }
-
     public String toString() {
-        return "Node [importante=" + importante + ", \nNext=" + next + ", \nDown=" + down + "]";
+        return "Node [\nimportante=" + importante + ", \nNext: " + next + "]";
     }
-
-
-
    
 }
