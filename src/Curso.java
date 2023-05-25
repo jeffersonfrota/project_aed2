@@ -35,10 +35,11 @@ public class Curso {
         this.listaTurmas = listaTurmas;
     }
 
+   
     public String toString() {
-        return "Curso\n\tidCurso: " + idCurso + ", \n\tnomeCurso: " + nomeCurso + ", \n\tlistaTurmas: " + listaTurmas;
+        return "Curso [idCurso=" + idCurso + ", nomeCurso=" + nomeCurso + ", listaTurmas=" + listaTurmas + "]";
     }
-    
+
     public void inserirTurma(int idProfessor, String nomeProfessor, int idSala, String nomeSala, int idDisciplina, String nomeDisciplina, int idTurma, int diaSemana, int quantAluno, String horarioI, String horarioF, String nomeTurma){
         
         Professor professor = new Professor(idProfessor,nomeProfessor);

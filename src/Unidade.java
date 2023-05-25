@@ -40,37 +40,35 @@ public class Unidade {
         + "]";
     }
 
-    public String inserirCurso(int idCurso, String nomeCurso,int idProfessor, String nomeProfessor, int idSala, String nomeSala, int idDisciplina, String nomeDisciplina, int idTurma, int diaSemana, int quantAluno, String horarioI, String horarioF, String nomeTurma){
+    public void inserirCurso(int idCurso, String nomeCurso,int idProfessor, String nomeProfessor, int idSala, String nomeSala, int idDisciplina, String nomeDisciplina, int idTurma, int diaSemana, int quantAluno, String horarioI, String horarioF, String nomeTurma){
 
         Curso curso = new Curso(idCurso, nomeCurso);
         curso.inserirTurma(idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
         
-       if(this.listaCursos.getHead() == null)
-        {
+
+        if(this.listaCursos.getHead() == null){
             this.listaCursos.inserir(curso);
-            return "deu certo";
         }
-       else{
-            if(!comparar(curso)){
-                this.listaCursos.inserir(curso);
-                return "deu certo";
+        else{
+            Node<Curso> current = consultar(curso);     
+            if(current != null){
+                current.getImportante().inserirTurma(idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
             }
             else{
-                return "nao deu";
+                this.listaCursos.inserir(curso);
             }
         }
-
     }
 
-    public boolean comparar(Curso curso){
+    public Node<Curso> consultar(Curso curso){
         Node<Curso> current = this.listaCursos.getHead();
         while(current != null)
         {
-            if(current.getImportante().getIdCurso() == curso.getIdCurso()){
-                return true;
+            if(current.getImportante().getIdCurso() == curso.getIdCurso() && current.getImportante().getNomeCurso() == curso.getNomeCurso()){
+                return current;
             }
             current = current.getNext();
         }
-        return false;
+        return null;
     }
 }

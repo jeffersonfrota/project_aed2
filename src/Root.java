@@ -24,26 +24,29 @@ public class Root {
         instituicao.inserirUnidade(idUnidade, nomeUnidade, idCurso, nomeCurso, idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
 
        
-        if(this.listaInstituicao.getHead() == null)
-        {
+        if(this.listaInstituicao.getHead() == null){
             this.listaInstituicao.inserir(instituicao);
         }
-       else{
-            if(comparar(instituicao)){
-                this.listaInstituicao.getHead().getImportante().inserirUnidade(idUnidade, nomeUnidade, idCurso, nomeCurso, idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
+        else{
+            Node<Instituicao> current = consultar(instituicao);   
+            if(current != null){
+                current.getImportante().inserirUnidade(idUnidade, nomeUnidade, idCurso, nomeCurso, idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
+            }
+            else{
+                this.listaInstituicao.inserir(instituicao);
             }
         }
     }
 
-    public boolean comparar(Instituicao instituicao){
+    public Node<Instituicao> consultar(Instituicao instituicao){
         Node<Instituicao> current = this.listaInstituicao.getHead();
         while(current != null)
         {
             if(current.getImportante().getIdInstituicao() == instituicao.getIdInstituicao() &&  current.getImportante().getNomeInstituicao() == instituicao.getNomeInstituicao()){
-                return true;
+                return current;
             }
             current = current.getNext();
         }
-        return false;
+        return null;
     }
 }

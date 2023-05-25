@@ -1,4 +1,4 @@
-import util.LinkedList2;
+import util.*;
 
 public class Instituicao {
     private int idInstituicao;
@@ -45,7 +45,30 @@ public class Instituicao {
         Unidade unidade = new Unidade(idUnidade,nomeUnidade);
         unidade.inserirCurso(idCurso, nomeCurso, idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
 
-        this.listaUnidade.inserir(unidade);
+        if(this.listaUnidade.getHead() == null){
+            this.listaUnidade.inserir(unidade);
+        }
+        else{
+            Node<Unidade> current = consultar(unidade);     
+            if(current != null){
+                current.getImportante().inserirCurso(idCurso, nomeCurso, idProfessor, nomeProfessor, idSala, nomeSala, idDisciplina, nomeDisciplina, idTurma, diaSemana, quantAluno, horarioI, horarioF, nomeTurma);
+            }
+            else{
+                this.listaUnidade.inserir(unidade);
+            }
+        }
+    }
+
+    public Node<Unidade> consultar(Unidade unidade){
+        Node<Unidade> current = this.listaUnidade.getHead();
+        while(current != null)
+        {
+            if(current.getImportante().getIdUnidade() == unidade.getIdUnidade() &&  current.getImportante().getNomeUnidade() == unidade.getNomeUnidade()){
+                return current;
+            }
+            current = current.getNext();
+        }
+        return null;
     }
 
 }
